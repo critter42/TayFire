@@ -14,5 +14,6 @@
 
 <body>
   <img src ="images/TayFireLogo.gif">
+  <a href = "createacct.php">Click here to create an account</a>
 </body>
 </html>
