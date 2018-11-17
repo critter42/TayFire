@@ -13,6 +13,6 @@
 </head>
 
 <body>
-  <img src ="images/TayFire.gif">
+  <img src ="images/TayFireLogo.gif">
 </body>
 </html>
