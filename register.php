@@ -24,7 +24,7 @@ if(isset($_POST['submitted']))
 
 <!-- Form Code Start -->
 <div id='tayfiresite'>
-<form id='register' action='<?php echo $TayFireUsersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
+<form id='register' action="<?php echo $TayFireUsersite->GetSelfScript(); ?>" method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>New Account</legend>
 
