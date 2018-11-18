@@ -5,7 +5,7 @@ if(isset($_POST['submitted']))
 {
    if($TayFireUsersite->Login())
    {
-        $TayFireUsersite->RedirectToURL("index.html");
+        $TayFireUsersite->RedirectToURL("index.php");
    }
 }
 
