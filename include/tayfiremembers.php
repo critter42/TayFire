@@ -298,7 +298,7 @@ class TayFireUsersite
     
     function HandleDBError($err)
     {
-        $this->HandleError($err."\r\n mysqlerror:".mysql_error());
+        $this->HandleError($err."\r\n mysqlerror:".mysqli_error());
     }
     
     function GetFromAddress()
@@ -332,15 +332,15 @@ class TayFireUsersite
         $pwdmd5 = md5($password);
         $qry = "Select name, email from $this->tablename where username='$username' and password='$pwdmd5' and confirmcode='y'";
         
-        $result = mysql_query($qry,$this->connection);
+        $result = mysqli_query($qry,$this->connection);
         
-        if(!$result || mysql_num_rows($result) <= 0)
+        if(!$result || mysqli_num_rows($result) <= 0)
         {
             $this->HandleError("Error logging in. The username or password does not match");
             return false;
         }
         
-        $row = mysql_fetch_assoc($result);
+        $row = mysqli_fetch_assoc($result);
         
         
         $_SESSION['firstName_of_user']  = $row['firstName'];
@@ -367,7 +367,7 @@ class TayFireUsersite
         
         $qry = "Update $this->tablename Set password='".md5($newpwd)."' Where  user_id=".$user_rec['user_id']."";
         
-        if(!mysql_query( $qry ,$this->connection))
+        if(!mysqli_query( $qry ,$this->connection))
         {
             $this->HandleDBError("Error updating the password \nquery:$qry");
             return false;
@@ -384,14 +384,14 @@ class TayFireUsersite
         }   
         $email = $this->SanitizeForSQL($email);
         
-        $result = mysql_query("Select * from $this->tablename where email='$email'",$this->connection);  
+        $result = mysqli_query("Select * from $this->tablename where email='$email'",$this->connection);  
 
-        if(!$result || mysql_num_rows($result) <= 0)
+        if(!$result || mysqli_num_rows($result) <= 0)
         {
             $this->HandleError("There is no user with email: $email");
             return false;
         }
-        $user_rec = mysql_fetch_assoc($result);
+        $user_rec = mysqli_fetch_assoc($result);
 
         
         return true;
@@ -622,8 +622,8 @@ class TayFireUsersite
     {
         $field_val = $this->SanitizeForSQL($formvars[$fieldname]);
         $qry = "select username from $this->tablename where $fieldname='".$field_val."'";
-        $result = mysql_query($qry,$this->connection);   
-        if($result && mysql_num_rows($result) > 0)
+        $result = mysqli_query($qry,$this->connection);   
+        if($result && mysqli_num_rows($result) > 0)
         {
             return false;
         }
@@ -640,12 +640,12 @@ class TayFireUsersite
             $this->HandleDBError("Database Login failed! Please make sure that the DB login credentials provided are correct");
             return false;
         }
-        if(!mysql_select_db($this->database, $this->connection))
+        if(!mysqli_select_db($this->database, $this->connection))
         {
             $this->HandleDBError('Failed to select database: '.$this->database.' Please make sure that the database name provided is correct');
             return false;
         }
-        if(!mysql_query("SET NAMES 'UTF8'",$this->connection))
+        if(!mysqli_query("SET NAMES 'UTF8'",$this->connection))
         {
             $this->HandleDBError('Error setting utf8 encoding');
             return false;
@@ -655,8 +655,8 @@ class TayFireUsersite
     
     function Ensuretable()
     {
-        $result = mysql_query("SHOW COLUMNS FROM $this->tablename");   
-        if(!$result || mysql_num_rows($result) <= 0)
+        $result = mysqli_query("SHOW COLUMNS FROM $this->tablename");   
+        if(!$result || mysqli_num_rows($result) <= 0)
         {
             return $this->CreateTable();
         }
@@ -675,7 +675,7 @@ class TayFireUsersite
                 "PRIMARY KEY ( user_id)".
                 ")";
                 
-        if(!mysql_query($qry,$this->connection))
+        if(!mysqli_query($qry,$this->connection))
         {
             $this->HandleDBError("Error creating the table \nquery was\n $qry");
             return false;
@@ -705,7 +705,7 @@ class TayFireUsersite
                 "' . md5($formvars['password']) . '",
                 "' . $confirmcode . '"
                 )';      
-        if(!mysql_query( $insert_query ,$this->connection))
+        if(!mysqli_query( $insert_query ,$this->connection))
         {
             $this->HandleDBError("Error inserting data to the table\nquery:$insert_query");
             return false;
@@ -720,9 +720,9 @@ class TayFireUsersite
     }
     function SanitizeForSQL($str)
     {
-        if( function_exists( "mysql_real_escape_string" ) )
+        if( function_exists( "mysqli_real_escape_string" ) )
         {
-              $ret_str = mysql_real_escape_string( $str );
+              $ret_str = mysqli_real_escape_string( $str );
         }
         else
         {
