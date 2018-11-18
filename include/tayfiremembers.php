@@ -24,7 +24,7 @@ class TayfireMembers
     function TayFireUsersite()
     {
         $this->sitename = 'TayFire.com';
-        $this->rand_key = '0iQx5oBk66oVZep';
+        $this->rand_key = 'QAAucYfpdlHyTGA';
     }
     
     function InitDB($host,$username,$pwd,$database,$tablename)

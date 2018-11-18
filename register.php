@@ -3,7 +3,7 @@ require_once("./include/tayfireconfig.php");
 
 if(isset($_POST['submitted']))
 {
-   if($TayFireUsersite->RegisterUser())
+   if($TayFireUsersite->CreateUser())
    {
         $TayFireUsersite->RedirectToURL("thank-you.html");
    }
