@@ -694,16 +694,14 @@ class TayFireUsersite
                 firstName,
 				lastName,
                 email,
-                password,
-                confirmcode
+                password
                 )
                 values
                 (
                 "' . $this->SanitizeForSQL($formvars['firstName']) . '",
 				"' . $this->SanitizeForSQL($formvars['lastName']) . '",
                 "' . $this->SanitizeForSQL($formvars['email']) . '",
-                "' . md5($formvars['password']) . '",
-                "' . $confirmcode . '"
+                "' . md5($formvars['password']) . '"
                 )';      
         if(!mysqli_query( $insert_query ,$this->connection))
         {
