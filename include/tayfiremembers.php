@@ -12,6 +12,7 @@ class TayFireUsersite
     var $admin_email;
     var $from_address;
     var $email;
+	var $username
     var $pwd;
     var $database;
     var $tablename;
