@@ -298,7 +298,7 @@ class TayFireUsersite
     
     function HandleDBError($err)
     {
-        $this->HandleError($err."\r\n mysqlerror:".mysqli_error($connection));
+        $this->HandleError($err."\r\n mysqlerror:");
     }
     
     function GetFromAddress()
@@ -655,7 +655,7 @@ class TayFireUsersite
     
     function Ensuretable()
     {
-        $result = mysqli_query("SHOW COLUMNS FROM $this->tablename");   
+        $result = mysqli_query($this->connection,"SHOW COLUMNS FROM $this->tablename");   
         if(!$result || mysqli_num_rows($result) <= 0)
         {
             return $this->CreateTable();
