@@ -633,7 +633,7 @@ class TayFireUsersite
     function DBLogin()
     {
 
-        $this->connection = mysqli_connect($this->db_host,$this->email,$this->pwd);
+        $this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd);
 
         if(!$this->connection)
         {   
