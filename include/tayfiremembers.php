@@ -583,7 +583,7 @@ class TayfireMembers
         $mailer->Body ="A new user registered at ".$this->sitename."\r\n".
         "First Name: ".$formvars['firstName']."\r\n".
         "Last Name: ".$formvars['lasstName']."\r\n".
-        "Email address: ".$formvars['email']."\r\n".;
+        "Email address: ".$formvars['email']."\r\n";
         
         if(!$mailer->Send())
         {
