@@ -656,7 +656,7 @@ class TayFireUsersite
     function Ensuretable()
     {
         $result = mysqli_query($this->connection,"SHOW COLUMNS FROM $this->tablename");   
-        if(!$result || mysqli_num_rows($result) <= 0)
+        if(!$result || mysqli_num_fields($result) <= 0)
         {
             return $this->CreateTable();
         }
