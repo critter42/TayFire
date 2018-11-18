@@ -74,10 +74,7 @@ class TayFireUsersite
             return false;
         }
         
-        if(!$this->SendUserConfirmationEmail($formvars))
-        {
-            return false;
-        }
+        
 
         $this->SendNewUserRegistrationEmail($formvars);
         
@@ -720,7 +717,7 @@ class TayFireUsersite
     {
         if( function_exists( "mysqli_real_escape_string" ) )
         {
-              $ret_str = mysqli_real_escape_string( $str );
+              $ret_str = mysqli_real_escape_string( $this->connection,$str );
         }
         else
         {
