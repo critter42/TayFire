@@ -32,8 +32,8 @@ if(isset($_POST['submitted']))
 
 <div><span class='error'><?php echo $TayFireUsersite->GetErrorMessage(); ?></span></div>
 <div class='container'>
-    <label for='username' >Email*:</label><br/>
-    <input type='text' name='username' id='username' value='<?php echo $TayFireUsersite->SafeDisplay('username') ?>' maxlength="50" /><br/>
+    <label for='email' >Email*:</label><br/>
+    <input type='text' name='email' id='email' value='<?php echo $TayFireUsersite->SafeDisplay('email') ?>' maxlength="50" /><br/>
     <span id='login_username_errorloc' class='error'></span>
 </div>
 <div class='container'>
