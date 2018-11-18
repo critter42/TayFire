@@ -327,7 +327,7 @@ class TayFireUsersite
         }          
         $username = $this->SanitizeForSQL($username);
         $pwdmd5 = md5($password);
-        $qry = "Select firstName, lastName, email from $this->tablename where email='$username' and password='$pwdmd5' and confirmcode='y'";
+        $qry = "Select firstName, lastName, email from $this->tablename where email='$username' and password='$pwdmd5'";
         
         $result = mysqli_query($this->connection,$qry);
         
