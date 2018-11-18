@@ -1,7 +1,7 @@
 <?PHP
 require_once("./include/tayfiremembers.php");
 
-$tayfiremembers = new TayfireMembers();
+$tayfiremembers = new TayfireUsersite();
 
 //Provide your site name here
 $tayfiremembers->SetWebsiteName('tayfire.com');

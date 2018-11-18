@@ -7,7 +7,7 @@ Team TayFire
 require_once("class.phpmailer.php");
 require_once("formvalidator.php");
 
-class TayfireMembers
+class TayFireUsersite
 {
     var $admin_email;
     var $from_address;
