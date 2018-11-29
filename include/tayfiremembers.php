@@ -138,6 +138,11 @@ class TayFireUsersite
         return isset($_SESSION['email_of_user'])?$_SESSION['email_of_user']:'';
     }
     
+	function UserID()
+	{
+		return isset($_SESSION['id_of_user'])?$_SESSION['id_of_user']:'';
+	}
+	
     function LogOut()
     {
         session_start();

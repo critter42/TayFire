@@ -18,6 +18,7 @@ if(!$TayFireUsersite->CheckLogin())
 <body>
 <div id='tayfiresite_content'>
 <h2>Home Page</h2>
+
 Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName(); ?>!
 
 <p><a href='change-pwd.php'>Change password</a></p>
@@ -26,5 +27,17 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 <br><br><br>
 <p><a href='logout.php'>Logout</a></p>
 </div>
+<?PHP
+$qry = "SELECT p_title, p_content FROM Post where post_id = $TayFireUsersite->UserID()";
+$result = mysqli_query($this->connection,$qry);
+
+if($result->num_rows > 0) {
+	while($row = $result->fetch_assoc()) {
+	   echo $row["p_title"]." <br>" . $row["p_content"]." <br>";
+	 }
+}
+else {
+    echo "No posts! <br>";
+?>	
 </body>
 </html>
