@@ -32,7 +32,7 @@ $TayFireUsersite->UserFirstName();
 $TayFireUsersite->UserID();
 $qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post A p where poster_id = '2'";
 $conn = new mysqli('localhost','TayFire','T4yF1r3!','TayFire');
-$result = $conn->query($qry);
+$result = mysqli_query($conn,$qry);
 
 if($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
