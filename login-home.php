@@ -29,10 +29,7 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 </div>
 <?=
 
-$TayFireUsersite->UserID();
-$TayFireUsersite->UserEmail();
-$TayFireUsersite->UserFirstName();
-$TayFireUsersite->UserLastName();
+$TayFireUsersite->UserID()." ".$TayFireUsersite->UserEmail()." ".$TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName();
 
 $qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '2'";
 $conn = new mysqli('localhost','TayFire','T4yF1r3!','TayFire');
