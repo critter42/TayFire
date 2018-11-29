@@ -31,7 +31,7 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 
 $TayFireUsersite->UserID()." ".$TayFireUsersite->UserEmail()." ".$TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName();
 
-$qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '2'";
+$qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = $TayFireUsersite->UserID()";
 $conn = new mysqli('localhost','TayFire','T4yF1r3!','TayFire');
 $result = mysqli_query($conn,$qry);
 if (!$result) {
