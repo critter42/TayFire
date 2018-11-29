@@ -30,7 +30,7 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 <?=
 $TayFireUsersite->UserFirstName();
 $TayFireUsersite->UserID();
-$qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post A p where poster_id = 2";
+$qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post A p where poster_id = '2'";
 $conn = new mysqli('localhost','TayFire','T4yF1r3!','TayFire');
 $result = mysqli_query($conn,$qry);
 
