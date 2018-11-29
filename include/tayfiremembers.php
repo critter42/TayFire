@@ -140,7 +140,7 @@ class TayFireUsersite
     
 	function UserID()
 	{
-		return isset($_SESSION['id_of_user'])?$_SESSION['id_of_user']:'';
+		return isset($_SESSION['user_id_of_user'])?$_SESSION['user_id_of_user']:'';
 	}
 	
     function LogOut()
@@ -332,7 +332,7 @@ class TayFireUsersite
         }          
         $username = $this->SanitizeForSQL($username);
         $pwdmd5 = md5($password);
-        $qry = "Select firstName, lastName, email from $this->tablename where email='$username' and password='$pwdmd5'";
+        $qry = "Select user_id,firstName, lastName, email from $this->tablename where email='$username' and password='$pwdmd5'";
         
         $result = mysqli_query($this->connection,$qry);
         
