@@ -16,8 +16,8 @@ $TayFireUsersite->SetAdminEmail('dchmbrln@memphis.edu');
 $TayFireUsersite->InitDB(/*hostname*/'localhost',
                       /*username*/'TayFire',
                       /*password*/'T4yF1r3!',
-                      /*database name*/'TayFireDev',
-                      /*table name*/'Users');
+                      /*database name*/'TayFire',
+                      /*table name*/'User');
 
 //For better security. Get a random string from this link: http://tinyurl.com/randstr
 // and put it here
