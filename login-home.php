@@ -28,6 +28,8 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 <p><a href='logout.php'>Logout</a></p>
 </div>
 <?PHP
+$TayFireUsersite->UserFirstName()
+$TayFireUsersite->UserID();
 $qry = "SELECT p_title, p_content FROM Post where post_id = $TayFireUsersite->UserID()";
 $result = mysqli_query($this->connection,$qry);
 
