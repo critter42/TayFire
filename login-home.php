@@ -27,7 +27,7 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 <br><br><br>
 <p><a href='logout.php'>Logout</a></p>
 </div>
-<?PHP
+<?
 $TayFireUsersite->UserFirstName();
 $TayFireUsersite->UserID();
 $qry = "SELECT p_title, p_content FROM Post where post_id = $TayFireUsersite->UserID()";
