@@ -344,9 +344,11 @@ class TayFireUsersite
         
         $row = mysqli_fetch_assoc($result);
         
-        
+        $_SESSION['user_id_of_user'] = $row['user_id'];
         $_SESSION['firstName_of_user']  = $row['firstName'];
+		$_SESSION['lastName_of_user'] = $row['lastName'];
         $_SESSION['email_of_user'] = $row['email'];
+		
         
         return true;
     }
