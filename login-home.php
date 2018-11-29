@@ -31,7 +31,7 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 $TayFireUsersite->UserFirstName();
 $TayFireUsersite->UserID();
 $qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post A p where poster_id = 2";
-$result = mysqli_query($TayFireUsersite->connection,$qry);
+$result = mysqli_query($TayFireUsersite->$connection,$qry);
 
 if($result->num_rows > 0) {
 	while($row = $result->fetch_assoc()) {
