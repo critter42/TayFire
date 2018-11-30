@@ -179,7 +179,7 @@ class TayFireUsersite
 		$result = mysqli_query($this->connection,$qry);
 		if($result === false)
 		{
-			user_error("Query failed: ".mysqli->error."<br />\n$qry");
+			user_error("Query failed: ".mysqli_error);
 			return false;
 		}
 		return $result;
@@ -190,6 +190,11 @@ class TayFireUsersite
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd);
 		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id ='".$userid."'";
 		$result = mysqli_query($this->connection,$qry);
+		if($result === false)
+		{
+			user_error("Query failed: ".mysqli_error);
+			return false;
+		}
 		return $result;
 	}
 	
