@@ -193,12 +193,15 @@ class TayFireUsersite
             $this->HandleDBError("Error getting results \nquery was\n $qry");
             return false;
         }
-		if($result->num_rows > 0) {
-			while($row = $result->fetch_assoc()) {
+		else
+		{
+			if($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
 	    
-				echo $row["p_title"]." <br>" . $row["p_content"]." <br>";
-			echo "Comments";
+					echo $row["p_title"]." <br>" . $row["p_content"]." <br>";
+				echo "Comments";
 	  
+				}
 			}
 		}
 else {
