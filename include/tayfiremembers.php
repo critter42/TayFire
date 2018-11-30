@@ -188,6 +188,11 @@ class TayFireUsersite
 		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '".$userid."'";
 		echo $qry;
 		$result = mysqli_query($this->connection,$qry);
+		 if(!mysqli_query($this->connection,$qry))
+        {
+            $this->HandleDBError("Error getting results \nquery was\n $qry");
+            return false;
+        }
 		if($result->num_rows > 0) {
 			while($row = $result->fetch_assoc()) {
 	    
