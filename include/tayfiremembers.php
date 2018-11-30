@@ -175,8 +175,13 @@ class TayFireUsersite
     function GetComments($postid)
 	{
 	    $this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd);
-		$qry = "Select c.c_content, c.commenter_id FROM Comment WHERE post_id = '".$postid."'";
+		$qry = "Select c.c_content, c.commenter_id FROM Comment AS c WHERE c.post_id = '".$postid."'";
 		$result = mysqli_query($this->connection,$qry);
+		if($result === false)
+		{
+			user_error("Query failed: ".mysqli->error."<br />\n$query");
+			return false;
+		}
 		return $result;
 	}
 	
