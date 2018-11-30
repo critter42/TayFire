@@ -199,7 +199,9 @@ class TayFireUsersite
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
 		$qry = "Select u.firstName, u.lastName FROM User as u WHERE u.user_id = '".$userid."'";
 		$result = mysqli_query($this->connection,$qry);
-		$name = $row["firstName"]." ".$row["lastName"];
+		while($row = $result->fetch_assoc()){
+			$name = $row["firstName"]." ".$row["lastName"];
+		}
 		return $name;
 	}
 	
