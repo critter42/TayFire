@@ -36,17 +36,17 @@ $username = $TayFireUsersite->UserFirstName();
 $posts = $TayFireUsersite->GetUserPosts($userid);
 
 
-// if($posts->num_rows > 0) {
-	// while($row = $posts->fetch_assoc()) {
+if($posts->num_rows > 0) {
+	while($row = $posts->fetch_assoc()) {
 	    
-	   // echo $row["p_title"]." <br>" . $row["p_content"]." <br>";
-	   // echo "Comments";
+	   echo $row["p_title"]." <br>" . $row["p_content"]." <br>";
+	   echo "Comments";
 	  
-	 // }
-// }
-// else {
-    // echo "No posts! <br>";
-// }
+	 }
+}
+else {
+    echo "No posts! <br>";
+}
 ?>	
 </body>
 </html>

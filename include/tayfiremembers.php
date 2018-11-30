@@ -174,7 +174,7 @@ class TayFireUsersite
     }
     function GetComments($postid)
 	{
-	    $this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd);
+	    $this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
 		$qry = "Select c.c_content, c.commenter_id FROM Comment AS c WHERE c.post_id = '".$postid."'";
 		$result = mysqli_query($this->connection,$qry);
 		if($result === false)
@@ -184,23 +184,12 @@ class TayFireUsersite
 	
 	function GetUserPosts($userid)
 	{
-		$conn = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
 		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '".$userid."'";
-		echo $qry;
-		$result = mysqli_query($conn,$qry);
+		$result = mysqli_query($this->connection,$qry);
 		
-		if($result->num_rows > 0) {
-			while($row = $result->fetch_assoc()) {
-	    		echo $row["p_title"]." <br>" . $row["p_content"]." <br>";
-				echo "Comments";
-	  
-			}
-		}
 		
-		else {
-			echo "No posts! <br>";
-		}
-		//return $result;
+		return $result;
 	}
 	
     function ResetPassword()
