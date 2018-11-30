@@ -177,9 +177,12 @@ class TayFireUsersite
 	    $this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
 		$qry = "Select c.c_content, c.commenter_id FROM Comment AS c WHERE c.post_id = '".$postid."'";
 		$result = mysqli_query($this->connection,$qry);
-		if($result === false)
+		while($row = $result->fetch_assoc()) {
+			$commenter = GetNamefromID($row["commenter_id"]);
+			echo $row["c_content"]." - ".$commenter."<br/>";
+		}
 
-		return $result;
+		//return $result;
 	}
 	
 	function GetUserPosts($userid)
