@@ -32,7 +32,7 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 
 $userid = $TayFireUsersite->UserID();
 
-$posts = $this->GetUserPosts($userid);
+$posts = $TayFireUsersite->GetUserPosts($userid);
 if (!$posts) {
     trigger_error('Invalid query: ' . $conn->error);
 }
