@@ -31,6 +31,7 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 <?=
 
 $userid = $TayFireUsersite->UserID();
+$username = $TayFireUsersite->UserFirstName();
 
 $posts = $TayFireUsersite->GetUserPosts($userid);
 
