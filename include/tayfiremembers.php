@@ -176,14 +176,14 @@ class TayFireUsersite
 	{
 	    $qry = "Select c.c_content, c.commenter_id FROM Comment WHERE post_id = '".$postid."'";
 		$result = mysqli_query($this->connection,$qry);
-		return $result
+		return $result;
 	}
 	
 	function GetUserPosts($userid)
 	{
 		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content, c FROM Post AS p where p.poster_id ='".$userid."'";
 		$result = mysqli_query($this->connection,$qry);
-		return $result
+		return $result;
 	}
 	
     function ResetPassword()
