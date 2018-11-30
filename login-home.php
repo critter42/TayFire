@@ -41,7 +41,11 @@ if($posts->num_rows > 0) {
 	    
 	   echo $row["p_title"]." <br />" . $row["p_content"]." <br />";
 	   echo "Comments <br />";
-	  
+	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
+	   while($row = $comments->fect_assoc()) {
+			$commenter = GetUserfromID($row["commenter_id"]);
+			echo $row["c_content"]." - ".$commenter."<br/>";
+		}
 	 }
 }
 else {

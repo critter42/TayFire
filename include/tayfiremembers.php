@@ -192,6 +192,14 @@ class TayFireUsersite
 		return $result;
 	}
 	
+	function GetNamefromID($userid) {
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "Select u.firstName, u.lastName FROM User as u WHERE u.user_id = '".$userid."'";
+		$result = mysqli_query($this->connection,$qry);
+		$name = $row["firstName"]." ".$row["lastName"];
+		return $name;
+	}
+	
     function ResetPassword()
     {
         if(empty($_GET['email']))
