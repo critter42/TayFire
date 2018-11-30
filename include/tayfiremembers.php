@@ -179,7 +179,7 @@ class TayFireUsersite
 		$result = mysqli_query($this->connection,$qry);
 		if($result === false)
 		{
-			user_error("Query failed: ".mysqli->error."<br />\n$query");
+			user_error("Query failed: ".mysqli->error."<br />\n$qry");
 			return false;
 		}
 		return $result;
