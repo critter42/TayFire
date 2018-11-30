@@ -178,7 +178,7 @@ class TayFireUsersite
 		$qry = "Select c.c_content, c.commenter_id FROM Comment AS c WHERE c.post_id = '".$postid."'";
 		$result = mysqli_query($this->connection,$qry);
 		while($row = $result->fetch_assoc()) {
-			$commenter = GetNamefromID($row["commenter_id"]);
+			$commenter = $this->GetNamefromID($row["commenter_id"]);
 			echo $row["c_content"]." - ".$commenter."<br/>";
 		}
 
