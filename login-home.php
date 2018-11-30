@@ -27,21 +27,21 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 <br><br><br>
 <p><a href='logout.php'>Logout</a></p>
 </div>
+<!--$TayFireUsersite->UserID()." ".$TayFireUsersite->UserEmail()." ".$TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName();-->
 <?=
-
-$TayFireUsersite->UserID()." ".$TayFireUsersite->UserEmail()." ".$TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName();
 
 $userid = $TayFireUsersite->UserID();
 
-$qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id ='".$userid."'";
-$conn = new mysqli('localhost','TayFire','T4yF1r3!','TayFire');
-$result = mysqli_query($conn,$qry);
-if (!$result) {
+$posts = GetUserPosts($userid);
+if (!$posts) {
     trigger_error('Invalid query: ' . $conn->error);
 }
-if($result->num_rows > 0) {
-	while($row = $result->fetch_assoc()) {
+if($posts->num_rows > 0) {
+	while($row = $posts->fetch_assoc()) {
+	    
 	   echo $row["p_title"]." <br>" . $row["p_content"]." <br>";
+	   echo "Comments";
+	  
 	 }
 }
 else {
