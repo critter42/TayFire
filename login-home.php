@@ -27,7 +27,7 @@ Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLas
 <br><br><br>
 <p><a href='logout.php'>Logout</a></p>
 </div>
-<!--$TayFireUsersite->UserID()." ".$TayFireUsersite->UserEmail()." ".$TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName();-->
+
 <?=
 
 $userid = $TayFireUsersite->UserID();
