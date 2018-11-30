@@ -183,7 +183,7 @@ class TayFireUsersite
 	function GetUserPosts($userid)
 	{
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd);
-		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content, c FROM Post AS p where p.poster_id ='".$userid."'";
+		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id ='".$userid."'";
 		$result = mysqli_query($this->connection,$qry);
 		return $result;
 	}
