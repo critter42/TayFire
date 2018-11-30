@@ -17,16 +17,11 @@ if(!$TayFireUsersite->CheckLogin())
 </head>
 <body>
 <div id='tayfiresite_content'>
-<h2>Home Page</h2>
-
-Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName(); ?>!
-
-<p><a href='change-pwd.php'>Change password</a></p>
+<h2><?= $TayFireUsersite->UserFirstName(); ?>'s Posts!</h2>
 
 <!-- <p><a href='access-controlled.php'>A sample 'members-only' page</a></p> -->
 <br><br><br>
-<p><a href='logout.php'>Logout</a></p>
-</div>
+
 
 <?=
 
@@ -49,5 +44,8 @@ else {
     echo "No posts! <br>";
 }
 ?>	
+<p><a href='logout.php'>Logout</a></p>
+<p><a href='change-pwd.php'>Change password</a></p>
+</div>
 </body>
 </html>
