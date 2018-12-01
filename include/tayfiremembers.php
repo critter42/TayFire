@@ -195,6 +195,17 @@ class TayFireUsersite
 		return $result;
 	}
 	
+	function GetPost($postid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.post_id = '".$postid."'";
+		$result = mysqli_query($this->connection,$qry);
+		
+		
+		return $result;
+	}
+	
+	
 	function GetNamefromID($userid) {
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
 		$qry = "Select u.firstName, u.lastName FROM User as u WHERE u.user_id = '".$userid."'";
