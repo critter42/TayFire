@@ -13,7 +13,7 @@ if(!$TayFireUsersite->CheckLogin())
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
-      <title>Home page</title>
+      <title>Post</title>
       <link rel="STYLESHEET" type="text/css" href="style/tayfiresite.css">
 </head>
 <body>
@@ -29,3 +29,54 @@ if($post->num_rows > 0) {
 
 	 }
 }?></h2>
+<?=
+$commenter = $_SESSION["user_id"];
+if(isset($_POST['submit']))
+{
+	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+	$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."'";
+	$result = mysqli_query($conn,$qry);
+}
+?>
+<!-- Form Code Start -->
+<div id='tayfiresite'>
+<form id='newComment' action="post.php" method='post' accept-charset='UTF-8'>
+<fieldset >
+<legend>Add Comment</legend>
+
+<input type='hidden' name='submitted' id='submitted' value='1'/>
+
+<div class='short_explanation'>* required fields</div>
+<input type='text'  class='spmhidip' name='<?php echo $TayFireUsersite->GetSpamTrapInputName(); ?>' />
+
+<div><span class='error'><?php echo $TayFireUsersite->GetErrorMessage(); ?></span></div>
+<div class='container'>
+    <label for='comment' >Comment*: </label><br/>
+    <input type='text' name='comment' id='comment' value='<?php echo $TayFireUsersite->SafeDisplay('comment') ?>' maxlength="1250" /><br/>
+    <span id='register_name_errorloc' class='error'></span>
+</div>
+
+<div class='container'>
+    <input type='submit' name='Submit' value='Submit' />
+</div>
+
+</fieldset>
+</form>
+<!-- client-side Form Validations:
+Uses the excellent form validation script from JavaScript-coder.com-->
+
+<script type='text/javascript'>
+// <![CDATA[
+
+    
+    var frmvalidator  = new Validator("comment");
+    frmvalidator.EnableOnPageErrorDisplay();
+    frmvalidator.EnableMsgsTogether();
+    frmvalidator.addValidation("comment","req","Please provide a comment");
+	
+
+
+// ]]>
+</script>
+
+
