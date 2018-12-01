@@ -44,9 +44,6 @@ echo "<form id='newComment' action='post.php?postid=".$postid."' method='post' a
 
 <input type='hidden' name='submitted' id='submitted' value='1'/>
 
-<div class='short_explanation'>* required fields</div>
-<input type='text'  class='spmhidip' name='<?php echo $TayFireUsersite->GetSpamTrapInputName(); ?>' />
-
 <div><span class='error'><?php echo $TayFireUsersite->GetErrorMessage(); ?></span></div>
 <div class='container'>
     <label for='comment' >Comment*: </label><br/>
