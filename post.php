@@ -29,16 +29,18 @@ if($post->num_rows > 0) {
 
 	 }
 }?></h2>
-<?=
+<?php
 $commenter = $_SESSION['user_id_of_user'];
 $postid = $_GET['postid'];  
 if(isset($_POST['Submit']))
 {
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 	$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."'";
+	echo $qry;
 	$result = mysqli_query($conn,$qry);
 }
-echo "<form id='newComment' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'>"; ?>
+?>
+<form id='newComment' action="<?php echo "post.php?postid=".$postid ?>" method='post' accept-charset='UTF-8'>"; ?>
 <fieldset >
 <legend>Add Comment</legend>
 
