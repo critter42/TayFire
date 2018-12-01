@@ -36,7 +36,6 @@ if(isset($_POST['Submit']))
 {
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 	$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
-	echo $qry;
 	$result = mysqli_query($conn,$qry);
 }
 ?>
