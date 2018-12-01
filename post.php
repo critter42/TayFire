@@ -30,7 +30,7 @@ if($post->num_rows > 0) {
 	 }
 }?></h2>
 <?=
-$commenter = $_SESSION["user_id"];
+$commenter = $_SESSION['user_id_of_user'];
 if(isset($_POST['submit']))
 {
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
