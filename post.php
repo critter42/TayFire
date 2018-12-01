@@ -21,8 +21,8 @@ if(!$TayFireUsersite->CheckLogin())
 <?= 
 $postid = $_GET['postid']; 
 $post = $TayFireUsersite->GetPost($postid);
-if($posts->num_rows > 0) {
-	while($row = $posts->fetch_assoc()) {	    
+if($post->num_rows > 0) {
+	while($row = $post->fetch_assoc()) {	    
 	   echo $row["p_title"]." <br /></a>" . $row["p_content"]." <br />";
 	   echo "Comments <br />";
 	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
