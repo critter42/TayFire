@@ -41,7 +41,7 @@ if(isset($_POST['submit']))
 ?>
 <!-- Form Code Start -->
 <div id='tayfiresite'>
-<form id='newComment' action="post.php" method='post' accept-charset='UTF-8'>
+<form id='newComment' action="<?php echo $TayFireUsersite->GetSelfScript(); ?>" method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>Add Comment</legend>
 
