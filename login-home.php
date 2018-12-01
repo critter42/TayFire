@@ -34,7 +34,7 @@ $posts = $TayFireUsersite->GetUserPosts($userid);
 if($posts->num_rows > 0) {
 	while($row = $posts->fetch_assoc()) {
 	    
-	   echo "<a href='post.php?postid= '".$row["post_id"]."'>" $row["p_title"]." <br /></a>" . $row["p_content"]." <br />";
+	   echo "<a href='post.php?postid= '".$row["post_id"]."'>".$row["p_title"]." <br /></a>" . $row["p_content"]." <br />";
 	   echo "Comments <br />";
 	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
 
