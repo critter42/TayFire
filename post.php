@@ -32,7 +32,7 @@ if($post->num_rows > 0) {
 <?=
 $commenter = $_SESSION['user_id_of_user'];
 $postid = $_GET['postid'];  
-if(isset($_POST['submit']))
+if(isset($_POST['Submit']))
 {
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 	$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."'";
