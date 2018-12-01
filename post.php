@@ -38,10 +38,7 @@ if(isset($_POST['submit']))
 	$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."'";
 	$result = mysqli_query($conn,$qry);
 }
-?>
-<!-- Form Code Start -->
-<div id='tayfiresite'>
-<?= echo "<form id='newComment' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'>"; ?>
+echo "<form id='newComment' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'>"; ?>
 <fieldset >
 <legend>Add Comment</legend>
 
