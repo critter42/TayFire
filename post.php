@@ -41,7 +41,7 @@ if(isset($_POST['submit']))
 ?>
 <!-- Form Code Start -->
 <div id='tayfiresite'>
-<?= echo "<form id='newComment' action=post.php?postid='=".$postid." method='post' accept-charset='UTF-8'>"; ?>
+<?= echo "<form id='newComment' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'>"; ?>
 <fieldset >
 <legend>Add Comment</legend>
 
