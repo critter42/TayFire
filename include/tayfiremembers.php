@@ -211,7 +211,7 @@ class TayFireUsersite
 		$qry = "SELECT count(p.post_id) as total FROM Post AS p where p.post_id = '".$postid."'";
 		$result = mysqli_query($this->connection,$qry);
 
-		$data=$result->fetch_assoc();
+		//$data=$result->fetch_assoc();
 
 		
 		return $data['total'];
