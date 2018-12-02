@@ -29,7 +29,7 @@ if(isset($_POST['Liked']))
 	$qry2 = "Select post_id,liker_id FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
 	$result = mysqli_query($conn,$qry2);
 	
-	if(!$result || mysqli_num_rows <= 0)
+	if (!$result || mysqli_num_rows($result)==0)
 	{
 		$qry = "Insert Into PostLikes (post_id,liker_id) VALUES('".$postid."','".$commenter."')";
 		$result2 = mysqli_query($conn,$qry);
