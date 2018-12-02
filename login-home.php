@@ -63,7 +63,7 @@ if($posts->num_rows > 0) {
 	    
 	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b></a><i> - ".$TayFireUsersite->GetNamefromID($userid)."</i><br/>".$row["p_content"]." <br />";
 	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
-	   echo "    LIKES: ".$likes."<form id='newComment' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'><br />";
+	   echo "    LIKES: ".$likes."<form id='newComment' action='login-home.php?postid=".$postid."' method='post' accept-charset='UTF-8'><br />";
 	   echo "    <div class='container'>";
 	   echo " 		<input type='submit' name='Liked' value='Liked' />";
        echo "		</div>";
