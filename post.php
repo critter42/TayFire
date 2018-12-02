@@ -27,7 +27,7 @@ if(isset($_POST['Liked']))
 {
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 	$qry2 = "Select post_id,liker_id FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
-	$result = mysqli_query($conn,$qry);
+	$result = mysqli_query($conn,$qry2);
 	
 	if(!$result || mysqli_num_rows <= 0)
 	{
