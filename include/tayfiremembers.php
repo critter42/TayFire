@@ -212,6 +212,7 @@ class TayFireUsersite
 		echo $qry;
 		$result = mysqli_query($this->connection,$qry);
 		$count=mysqli_num_rows($result);
+		echo $count;
 		
 		return $count;
 	}
