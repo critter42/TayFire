@@ -29,7 +29,7 @@ if(!$TayFireUsersite->CheckLogin())
 $userid = $TayFireUsersite->UserID();
 $username = $TayFireUsersite->UserFirstName();
 
-$posts = $TayFireUsersite->GetUserPosts($userid);
+$posts = $TayFireUsersite->GetUserFriendPosts($userid);
 if(isset($_POST['Submit']))
 	   {
 			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
@@ -41,7 +41,7 @@ if(isset($_POST['Submit']))
 if($posts->num_rows > 0) {
 	while($row = $posts->fetch_assoc()) {
 	    
-	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b> <br /></a>" . $row["p_content"]." <br />";
+	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b></a><i> - ".$TayFireUsersite->GetNamefromID($userid)."</i><br/>".$row["p_content"]." <br />";
 	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
 	   echo "    LIKES: ".$likes."<br />";
 	   echo "<i>Comments</i> <br />";
