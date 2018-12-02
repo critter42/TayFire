@@ -210,13 +210,9 @@ class TayFireUsersite
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
 		$qry = "SELECT count(p.post_id) as total FROM Post AS p where p.post_id = '".$postid."'";
 		$result = mysqli_query($this->connection,$qry);
-		if(!$result || mysqli_num_rows($result) <= 0)
-		{
-		$data=0;
-		}
-		else {
+
 		$data=$result->fetch_assoc();
-		}
+
 		
 		return $data['total'];
 	}
