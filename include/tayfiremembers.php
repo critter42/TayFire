@@ -214,7 +214,7 @@ class TayFireUsersite
 		//$data=$result->fetch_assoc();
 
 		
-		return $data['total'];
+		return $result;
 	}
 	
 	
