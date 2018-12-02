@@ -211,7 +211,7 @@ class TayFireUsersite
 		$qry = "SELECT ls.post_id FROM Like AS ls WHERE ls.post_id ='".$postid."'";
 		
 		$result = mysqli_query($this->connection,$qry);
-		if (!$result || mysqli_num_rows($result)==0}
+		if (!$result || mysqli_num_rows($result)==0)
 		{
 			$count = 0;
 			echo "<br />".$count."<br />";
