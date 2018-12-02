@@ -14,8 +14,9 @@ if(isset($_POST['submitted']))
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Contact us</title>
-    <link rel="STYLESHEET" type="text/css" href="style/tayfiresite.css" />
+    <link rel="STYLESHEET" type="text/css" href="bootstrap/css/bootstrap.css" />
     <script type='text/javascript' src='scripts/gen_validatorv31.js'></script>
     <link rel="STYLESHEET" type="text/css" href="style/pwdwidget.css" />
     <script src="scripts/pwdwidget.js" type="text/javascript"></script>      
@@ -23,7 +24,7 @@ if(isset($_POST['submitted']))
 <body>
 
 <!-- Form Code Start -->
-<div id='tayfiresite'>
+<div class="container">
 <form id='register' action="<?php echo $TayFireUsersite->GetSelfScript(); ?>" method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>New Account</legend>
