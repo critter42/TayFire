@@ -214,12 +214,12 @@ class TayFireUsersite
 		if (!$result || mysqli_num_rows($result)==0)
 		{
 			$count = 0;
-			echo "<br />".$count."<br />";
+		
 		}
 		else
 		{
 		$count=mysqli_num_rows($result);
-		echo "<br />".$count."<br />";
+		
 		}
 		
 		return $count;
