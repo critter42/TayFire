@@ -29,10 +29,11 @@ if(!$TayFireUsersite->CheckLogin())
 $userid = $TayFireUsersite->UserID();
 $username = $TayFireUsersite->UserFirstName();
 $commenter = $_SESSION['user_id_of_user'];
-$postid = $_GET['postid']; 
+
 $posts = $TayFireUsersite->GetUserPosts($userid);
 if(isset($_POST['Submit']))
 	   {
+			$postid = $_GET['postid']; 
 			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 			$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
 			$result = mysqli_query($conn,$qry);
@@ -40,18 +41,21 @@ if(isset($_POST['Submit']))
 		}
 if(isset($_POST['Liked']))
 {
+	$postid = $_GET['postid']; 
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 	$qry2 = "Select post_id,liker_id FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
 	$result = mysqli_query($conn,$qry2);
 	
 	if (!$result || mysqli_num_rows($result)==0)
 	{
+		$postid = $_GET['postid']; 
 		$qry = "Insert Into PostLikes (post_id,liker_id) VALUES('".$postid."','".$commenter."')";
 		$result2 = mysqli_query($conn,$qry);
 		//echo "<meta http-equiv='refresh' content='0'>";
 	}
 	else
 	{
+		$postid = $_GET['postid']; 
 		$del = "DELETE FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
 		$result3 = mysqli_query($conn,$del);
 		//echo "<meta http-equiv='refresh' content='0'>";
