@@ -57,8 +57,7 @@ if($post->num_rows > 0) {
 	   echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
 	 }
 }
-?>
-<?php
+
 $commenter = $_SESSION['user_id_of_user'];
 $postid = $_GET['postid'];  
 if(isset($_POST['Submit']))
@@ -70,7 +69,7 @@ if(isset($_POST['Submit']))
 }
 
 ?>
-<form id='newComment' action='<?php echo "post.php?postid='".$postid."'" ?>' method='post' accept-charset='UTF-8'>
+<form id='newComment' action='<?php echo "post.php?postid='".$postid."'"; ?>' method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>Add Comment</legend>
 
