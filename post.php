@@ -22,8 +22,8 @@ if(!$TayFireUsersite->CheckLogin())
 <?= 
 $postid = $_GET['postid']; 
 $post = $TayFireUsersite->GetPost($postid);
-if($posts->num_rows > 0) {
-	while($row = $posts->fetch_assoc()) {
+if($post->num_rows > 0) {
+	while($row = $post->fetch_assoc()) {
 	    
 	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b> <br /></a>" . $row["p_content"]." <br />";
 	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
