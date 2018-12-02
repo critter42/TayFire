@@ -29,7 +29,7 @@ if(!$TayFireUsersite->CheckLogin())
 $userid = $TayFireUsersite->UserID();
 $username = $TayFireUsersite->UserFirstName();
 
-$posts = $TayFireUsersite->GetUserFriendPosts($userid);
+$posts = $TayFireUsersite->GetUserPosts($userid);
 if(isset($_POST['Submit']))
 	   {
 			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
