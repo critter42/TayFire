@@ -25,7 +25,13 @@ if(!$TayFireUsersite->CheckLogin())
 
 
 <?=
-
+if(isset($_POST['Submit']))
+	   {
+			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+			$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
+			$result = mysqli_query($conn,$qry);
+			echo "<meta http-equiv='refresh' content='0'>";
+		}
 $userid = $TayFireUsersite->UserID();
 $username = $TayFireUsersite->UserFirstName();
 
@@ -42,13 +48,7 @@ if($posts->num_rows > 0) {
 	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
 	   $commenter = $_SESSION['user_id_of_user'];
        $postid = $row["post_id"];  
-       if(isset($_POST['Submit']))
-	   {
-			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
-			$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
-			$result = mysqli_query($conn,$qry);
-			echo "<meta http-equiv='refresh' content='0'>";
-		}
+       
 
 		echo "<form id='newComment".$postid."' action='login-home.php?postid=".$postid."' method='post' accept-charset='UTF-8'>";
 		echo "<fieldset >";
