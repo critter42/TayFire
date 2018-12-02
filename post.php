@@ -104,5 +104,6 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 
 // ]]>
 </script>
-
+</body>
+</HTML>
 
