@@ -19,7 +19,7 @@ if(!$TayFireUsersite->CheckLogin())
 </head>
 <body>
 <div class="container">
-<?= 
+<?php 
 $postid = $_GET['postid']; 
 $post = $TayFireUsersite->GetPost($postid);
 $commenter = $_SESSION['user_id_of_user'];
@@ -70,7 +70,7 @@ if(isset($_POST['Submit']))
 }
 
 ?>
-<form id='newComment' action="<?php echo "post.php?postid=".$postid ?>" method='post' accept-charset='UTF-8'>
+<form id='newComment' action="<?php echo "post.php?postid=".$postid; ?>" method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>Add Comment</legend>
 
