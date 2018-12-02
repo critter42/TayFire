@@ -63,6 +63,12 @@ echo "    <label for='comment' >Comment*: </label><br/>";
 echo "   <input type='text' name='comment' id='comment' value='".$TayFireUsersite->SafeDisplay('comment')."' maxlength='1250' /><br/>";
 echo "    <span id='register_name_errorloc' class='error'></span>";
 echo "</div>";
+echo "<div class='container'>";
+echo "   <input type='submit' name='Submit' value='Submit' />";
+echo "</div>";
+
+echo "</fieldset>";
+echo "</form>";
 	   echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
 	 }
 }
