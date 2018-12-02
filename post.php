@@ -70,7 +70,7 @@ if(isset($_POST['Submit']))
 }
 
 ?>
-<form id='newComment' action='<?php echo "post.php?postid='".$postid;."'" ?>' method='post' accept-charset='UTF-8'>
+<form id='newComment' action='<?php echo "post.php?postid='".$postid."'" ?>' method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>Add Comment</legend>
 
