@@ -37,7 +37,7 @@ if(isset($_POST['Submit']))
 			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 			$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
 			$result = mysqli_query($conn,$qry);
-			//echo "<meta http-equiv='refresh' content='0'>";
+			echo "<meta http-equiv='refresh' content='0'>";
 		}
 if(isset($_POST['Liked']))
 {
@@ -51,14 +51,14 @@ if(isset($_POST['Liked']))
 		$postid = $_GET['postid']; 
 		$qry = "Insert Into PostLikes (post_id,liker_id) VALUES('".$postid."','".$commenter."')";
 		$result2 = mysqli_query($conn,$qry);
-		//echo "<meta http-equiv='refresh' content='0'>";
+		echo "<meta http-equiv='refresh' content='0'>";
 	}
 	else
 	{
 		$postid = $_GET['postid']; 
 		$del = "DELETE FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
 		$result3 = mysqli_query($conn,$del);
-		//echo "<meta http-equiv='refresh' content='0'>";
+		echo "<meta http-equiv='refresh' content='0'>";
 	}
 }
 
