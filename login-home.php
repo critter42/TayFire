@@ -25,6 +25,11 @@ if(!$TayFireUsersite->CheckLogin())
 
 
 <?=
+
+$userid = $TayFireUsersite->UserID();
+$username = $TayFireUsersite->UserFirstName();
+
+$posts = $TayFireUsersite->GetUserPosts($userid);
 if(isset($_POST['Submit']))
 	   {
 			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
@@ -32,11 +37,6 @@ if(isset($_POST['Submit']))
 			$result = mysqli_query($conn,$qry);
 			echo "<meta http-equiv='refresh' content='0'>";
 		}
-$userid = $TayFireUsersite->UserID();
-$username = $TayFireUsersite->UserFirstName();
-
-$posts = $TayFireUsersite->GetUserPosts($userid);
-
 
 if($posts->num_rows > 0) {
 	while($row = $posts->fetch_assoc()) {
