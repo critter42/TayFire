@@ -38,13 +38,36 @@ if(isset($_POST['Submit']))
 			$result = mysqli_query($conn,$qry);
 			//echo "<meta http-equiv='refresh' content='0'>";
 		}
+if(isset($_POST['Liked']))
+{
+	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+	$qry2 = "Select post_id,liker_id FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
+	$result = mysqli_query($conn,$qry2);
+	
+	if (!$result || mysqli_num_rows($result)==0)
+	{
+		$qry = "Insert Into PostLikes (post_id,liker_id) VALUES('".$postid."','".$commenter."')";
+		$result2 = mysqli_query($conn,$qry);
+		echo "<meta http-equiv='refresh' content='0'>";
+	}
+	else
+	{
+		$del = "DELETE FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
+		$result3 = mysqli_query($conn,$del);
+		echo "<meta http-equiv='refresh' content='0'>";
+	}
+}
 
 if($posts->num_rows > 0) {
 	while($row = $posts->fetch_assoc()) {
 	    
 	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b></a><i> - ".$TayFireUsersite->GetNamefromID($userid)."</i><br/>".$row["p_content"]." <br />";
 	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
-	   echo "    LIKES: ".$likes."<br />";
+	   echo "    LIKES: ".$likes."<form id='newComment' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'><br />";
+	   echo "    <div class='container'>";
+	   echo " 		<input type='submit' name='Liked' value='Liked' />";
+       echo "		</div>";
+	   echo "     </form>";
 	   echo "<i>Comments</i> <br />";
 	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
 	   $commenter = $_SESSION['user_id_of_user'];
