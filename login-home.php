@@ -40,6 +40,29 @@ if($posts->num_rows > 0) {
 	   echo "    LIKES: ".$likes."<br />";
 	   echo "<i>Comments</i> <br />";
 	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
+	 
+$commenter = $_SESSION['user_id_of_user'];
+$postid = $_GET['postid'];  
+if(isset($_POST['Submit']))
+{
+	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+	$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
+	$result = mysqli_query($conn,$qry);
+	echo "<meta http-equiv='refresh' content='0'>";
+}
+
+echo "<form id='newComment' action=\"<?php echo \"post.php?postid=\".$postid ?>\" method=\'post\' accept-charset=\'UTF-8\'>";
+echo "<fieldset >";
+echo "<legend>Add Comment</legend>";
+
+echo "<input type=\'hidden\' name=\'submitted\' id=\'submitted\' value=\'1\'/>";
+
+echo "<div><span class=\'error\'><?php echo $TayFireUsersite->GetErrorMessage(); ?></span></div>";
+echo "<div class=\'container\'>";
+echo "    <label for=\'comment\' >Comment*: </label><br/>";
+echo "   <input type=\'text\' name=\'comment\' id=\'comment\' value=\'<?php echo $TayFireUsersite->SafeDisplay(\'comment\') ?>\' maxlength=\"1250\" /><br/>";
+echo "    <span id=\'register_name_errorloc\' class=\'error\'></span>";
+echo "</div>";
 	   echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
 	 }
 }

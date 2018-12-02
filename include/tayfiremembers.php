@@ -181,6 +181,7 @@ class TayFireUsersite
 			$commenter = $this->GetNamefromID($row["commenter_id"]);
 			echo $row["c_content"]." - ".$commenter."<br/><br /><br />";
 		}
+		
 
 		//return $result;
 	}
