@@ -42,6 +42,7 @@ if(isset($_POST['Submit']))
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 	$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
 	$result = mysqli_query($conn,$qry);
+	echo "<meta http-equiv='refresh' content='0'>";
 }
 ?>
 <form id='newComment' action="<?php echo "post.php?postid=".$postid ?>" method='post' accept-charset='UTF-8'>"; ?>
