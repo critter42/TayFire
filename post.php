@@ -51,6 +51,7 @@ if($post->num_rows > 0) {
 	   echo "    <div class='container'>";
 	   echo " 		<input type='submit' name='Liked' value='Liked' />";
        echo "		</div>";
+	   echo "     </form>";
 	   echo "<i>Comments</i> <br />";
 	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
 	   echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
