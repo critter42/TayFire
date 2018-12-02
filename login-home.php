@@ -44,6 +44,7 @@ if($posts->num_rows > 0) {
 else {
     echo "No posts! <br />";
 }
+echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
 ?>	
 <p><a href='logout.php'>Logout</a></p>
 <p><a href='change-pwd.php'>Change password</a></p>
