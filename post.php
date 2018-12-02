@@ -38,7 +38,7 @@ if(isset($_POST['Liked']))
 	else
 	{
 		$del = "DELETE FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
-		$result3 = mysqli_query($conn,$qry);
+		$result3 = mysqli_query($conn,$del);
 		//echo "<meta http-equiv='refresh' content='0'>";
 	}
 }
