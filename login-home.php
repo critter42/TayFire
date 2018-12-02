@@ -51,7 +51,7 @@ if(isset($_POST['Submit']))
 	echo "<meta http-equiv='refresh' content='0'>";
 }
 
-echo "<form id='newComment' action=\"post.php?postid=".$postid." method='post' accept-charset='UTF-8'>";
+echo "<form id='newComment' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'>";
 echo "<fieldset >";
 echo "<legend>Add Comment</legend>";
 
