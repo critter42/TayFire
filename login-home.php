@@ -48,13 +48,13 @@ if(isset($_POST['Liked']))
 	{
 		$qry = "Insert Into PostLikes (post_id,liker_id) VALUES('".$postid."','".$commenter."')";
 		$result2 = mysqli_query($conn,$qry);
-		echo "<meta http-equiv='refresh' content='0'>";
+		//echo "<meta http-equiv='refresh' content='0'>";
 	}
 	else
 	{
 		$del = "DELETE FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
 		$result3 = mysqli_query($conn,$del);
-		echo "<meta http-equiv='refresh' content='0'>";
+		//echo "<meta http-equiv='refresh' content='0'>";
 	}
 }
 
