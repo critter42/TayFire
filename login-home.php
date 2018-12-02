@@ -35,10 +35,10 @@ $posts = $TayFireUsersite->GetUserPosts($userid);
 if($posts->num_rows > 0) {
 	while($row = $posts->fetch_assoc()) {
 	    
-	   echo "<a href='post.php?postid=".$row["post_id"]."'>".$row["p_title"]." <br /></a>" . $row["p_content"]." <br /><br />";
+	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b> <br /></a>" . $row["p_content"]." <br />";
 	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
-	   echo $row["post_id"]."    LIKES: ".$likes."<br />";
-	   echo "Comments <br />";
+	   "    LIKES: ".$likes."<br />";
+	   echo "<i>Comments</i> <br />";
 	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
 	   echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
 	 }
