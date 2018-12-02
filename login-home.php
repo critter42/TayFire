@@ -28,7 +28,8 @@ if(!$TayFireUsersite->CheckLogin())
 
 $userid = $TayFireUsersite->UserID();
 $username = $TayFireUsersite->UserFirstName();
-
+$commenter = $_SESSION['user_id_of_user'];
+$postid = $_GET['postid']; 
 $posts = $TayFireUsersite->GetUserPosts($userid);
 if(isset($_POST['Submit']))
 	   {
