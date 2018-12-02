@@ -208,7 +208,7 @@ class TayFireUsersite
 	function GetNumLikes($postid)
 	{
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
-		$qry = "SELECT p.post_id FROM Post AS p where p.post_id = '".$postid."'";
+		$qry = "SELECT p.post_id FROM Post AS p where p.post_id ='".$postid."'";
 		echo $qry;
 		$result = mysqli_query($this->connection,$qry);
 		$count=mysqli_num_rows($result);
