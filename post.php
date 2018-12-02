@@ -41,6 +41,7 @@ if(isset($_POST['Liked']))
 		$result3 = mysqli_query($conn,$qry);
 		echo "<meta http-equiv='refresh' content='0'>";
 	}
+}
 		
 if($post->num_rows > 0) {
 	while($row = $post->fetch_assoc()) {
