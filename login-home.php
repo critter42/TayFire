@@ -37,7 +37,7 @@ if($posts->num_rows > 0) {
 	    
 	   echo "<a href='post.php?postid=".$row["post_id"]."'>".$row["p_title"]." <br /></a>" . $row["p_content"]." <br /><br />";
 	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
-	   echo "LIKES: ".$likes."<br />";
+	   echo $row["post_id"]."    LIKES: ".$likes."<br />";
 	   echo "Comments <br />";
 	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
 	   echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
