@@ -221,7 +221,7 @@ class TayFireUsersite
 	function GetFollowerCount($userid)
 	{
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
-		$qry = "SELECT isFollowed_id FROM Follow WHERE follower_id ='".$userid."'";
+		$qry = "SELECT isFollowed_id FROM Follow WHERE isFollowed_id ='".$userid."'";
 		
 		$result = mysqli_query($this->connection,$qry);
 		if (!$result || mysqli_num_rows($result)==0)
