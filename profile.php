@@ -30,14 +30,24 @@ if (empty($_GET['profileid'])){
 else
 {
 	$profile_id = $_GET['profileid'];
+}
         echo "<p>Name: ".$TayFireUsersite->GetNamefromID($profile_id);
         echo "<br>Email: ".$TayFireUsersite->GetEmailfromID($profile_id);
-        echo "<br># Followers: ".$TayFireUsersite->GetFollowerCount($_SESSION['user_id_of_user'])."</p>";?>
+        echo "<br># Followers: ".$TayFireUsersite->GetFollowerCount($_SESSION['user_id_of_user'])."</p>";
+?>
       </div>
       <div>
         <p>People I follow:<br />
 <?php
-$followed = $TayFireUsersite->GetFollowerList($_SESSION['user_id_of_user']);
+if (empty($_GET['profileid'])){
+	$profile_id = $_SESSION['user_id_of_user'];
+}
+else
+{
+	$profile_id = $_GET['profileid'];
+}
+$followed = $TayFireUsersite->GetFollowerList($profile_id);
+
 if ($followed->num_rows >0)
 {
 	while($row = $followed->fetch_assoc()){
