@@ -42,13 +42,13 @@ if(isset($_POST['Follow']))
 	
 	if (!$result || mysqli_num_rows($result)==0)
 	{
-		$qry = "Insert Into PostLikes (post_id,liker_id) VALUES('".$isFollowed."','".$user."')";
+		$qry = "Insert Into Follow (isFollowed_id,follower_id) VALUES('".$isFollowed."','".$user."')";
 		$result2 = mysqli_query($conn,$qry);
 		echo "<meta http-equiv='refresh' content='0'>";
 	}
 	else
 	{
-		$del = "DELETE FROM PostLikes WHERE post_id ='".$isFollowed."' AND liker_id = '".$user."'";
+		$del = "DELETE FROM Follow WHERE isFollowed_id ='".$isFollowed."' AND follower_id = '".$user."'";
 		$result3 = mysqli_query($conn,$del);
 		echo "<meta http-equiv='refresh' content='0'>";
 	}
