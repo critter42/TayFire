@@ -97,7 +97,7 @@ else
         <br>My Feed</p>
 <?=
 
-$userid = $TayFireUsersite->UserID();
+$userid = $_GET['profileid'];
 $username = $TayFireUsersite->UserFirstName();
 $commenter = $_SESSION['user_id_of_user'];
 
