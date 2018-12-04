@@ -70,6 +70,6 @@ Uses the excellent form validation script from JavaScript-coder.com-->
 <!--
 Form Code End (see html-form-guide.com for more info.)
 -->
-
+<a href='register.php'>Create New Account</a>
 </body>
 </html>
