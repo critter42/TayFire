@@ -65,7 +65,7 @@ if($post->num_rows > 0) {
 	   echo " 		<input type='submit' name='Liked' value='Liked' />";
        echo "		</div>";
 	   echo "    </form>"
-	   echo "<form id='sharePost' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'><br />" 
+	   echo "<form id='sharePost' action='post.php?postid=".$postid."' method='post' accept-charset='UTF-8'><br />"; 
 	   echo "    <div class='container'>";
 	   echo " 		<input type='submit' name='Share' value='Share' />";
        echo "		</div>";
