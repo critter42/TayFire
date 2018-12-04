@@ -23,6 +23,18 @@ if(!$TayFireUsersite->CheckLogin())
 $postid = $_GET['postid']; 
 $post = $TayFireUsersite->GetPost($postid);
 $commenter = $_SESSION['user_id_of_user'];
+
+if(isset($_POST['Share']))
+{
+	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+	$qry3 = "Select post_id,poster_id FROM Posts WHERE post_id ='".$postid."'";
+	$result = mysqli_query($conn,$qry3);
+	if (!$result || mysqli_num_rows($result)==0)
+	{
+		$qry4 = "INSERT INTO Share (owner_id,post_id,sharer_id) VALUES(".$row["poster_id"].",".$postid.",".$commenter.")";
+	}
+
+}
 if(isset($_POST['Liked']))
 {
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");

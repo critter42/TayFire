@@ -190,7 +190,7 @@ class TayFireUsersite
 		$result = mysqli_query($this->connection,$qry);
 		while($row = $result->fetch_assoc()) {
 			$commenter = $this->GetNamefromID($row["commenter_id"]);
-			echo $row["c_content"]." - ".$commenter."<br/><br /><br />";
+			echo $row["c_content"]." - <a href='profile.php?profileid=".$row["commenter_id"]."'>".$commenter."</a><br/><br /><br />";
 		}
 		
 
