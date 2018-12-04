@@ -273,6 +273,7 @@ class TayFireUsersite
 			$poster = $row["poster_id"];
 		}
 		return $poster;
+	}
 
 	function GetSharedPosts($userid)
 	{
@@ -280,7 +281,7 @@ class TayFireUsersite
 		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content, s.sharer_id FROM Post AS p INNER JOIN Share as s ON p.post_id = s.post_id WHERE s.sharer_id = '".$userid."'";
 		$result = mysqli_query($this->connection,$qry);
 	}
-	
+
 	function GetNumLikes($postid)
 	{
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
