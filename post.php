@@ -23,12 +23,11 @@ if(!$TayFireUsersite->CheckLogin())
 $postid = $_GET['postid']; 
 $post = $TayFireUsersite->GetPost($postid);
 $commenter = $_SESSION['user_id_of_user'];
+$posterid = $TayFireUsersite->GetPosterID($postid);
 
 if(isset($_POST['Share']))
 {
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
-	$qry3 = "Select post_id,poster_id FROM Posts WHERE post_id ='".$postid."'";
-	$result = mysqli_query($conn,$qry3);
 	$qry4 = "INSERT INTO Share (owner_id,post_id,sharer_id) VALUES(".$row["poster_id"].",".$postid.",".$commenter.")";
 	$result2 = mysqli_query($conn,$qry4);
 	echo "post Shared!";

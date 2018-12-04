@@ -217,6 +217,14 @@ class TayFireUsersite
 		
 		return $result;
 	}
+	function GetAllPosts(){
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p'";
+		$result = mysqli_query($this->connection,$qry);
+		
+		
+		return $result;
+	}
 	
 	function GetFollowerCount($userid)
 	{
@@ -256,6 +264,17 @@ class TayFireUsersite
 		return $result;
 	}
 	
+	function GetPosterID($postid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.post_id = '".$postid."'";
+		$result = mysqli_query($this->connection,$qry);
+		while($row = $result->fetch_assoc()){
+			$poster = $row["poster_id"];
+		}
+		return $poster;
+
+	}
 	function GetNumLikes($postid)
 	{
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
