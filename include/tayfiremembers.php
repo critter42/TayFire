@@ -172,7 +172,83 @@ class TayFireUsersite
         }
         return true;
     }
-    
+    function GetComments($postid)
+	{
+	    $this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "Select c.c_content, c.commenter_id FROM Comment AS c WHERE c.post_id = '".$postid."'";
+		$result = mysqli_query($this->connection,$qry);
+		while($row = $result->fetch_assoc()) {
+			$commenter = $this->GetNamefromID($row["commenter_id"]);
+			echo $row["c_content"]." - ".$commenter."<br/><br /><br />";
+		}
+		
+
+		//return $result;
+	}
+	
+	function GetUserPosts($userid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '".$userid."'";
+		$result = mysqli_query($this->connection,$qry);
+		
+		
+		return $result;
+	}
+	
+	function GetUserFriendPosts($userid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '".$userid."' OR p.poster_id IN (SELECT followed_id WHERE follower_id ='".$userid."')";
+		echo $qry;
+		$result = mysqli_query($this->connection,$qry);
+		
+		
+		return $result;
+	}
+	
+	function GetPost($postid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.post_id = '".$postid."'";
+		$result = mysqli_query($this->connection,$qry);
+		
+		
+		return $result;
+	}
+	
+	function GetNumLikes($postid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT post_id FROM PostLikes WHERE post_id ='".$postid."'";
+		
+		$result = mysqli_query($this->connection,$qry);
+		if (!$result || mysqli_num_rows($result)==0)
+		{
+			$count = 0;
+		
+		}
+		else
+		{
+		$count=mysqli_num_rows($result);
+		
+		}
+		
+		return $count;
+	}
+	
+	
+	
+	function GetNamefromID($userid) {
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "Select u.firstName, u.lastName FROM User as u WHERE u.user_id = '".$userid."'";
+		$result = mysqli_query($this->connection,$qry);
+		while($row = $result->fetch_assoc()){
+			$name = $row["firstName"]." ".$row["lastName"];
+		}
+		return $name;
+	}
+	
     function ResetPassword()
     {
         if(empty($_GET['email']))
@@ -633,7 +709,7 @@ class TayFireUsersite
         }
         return true;
     }
-    
+
     function DBLogin()
     {
 

@@ -12,39 +12,100 @@ if(!$TayFireUsersite->CheckLogin())
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <head>
       <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1"/>
       <title>Home page</title>
-      <link rel="STYLESHEET" type="text/css" href="style/tayfiresite.css">
+      <link rel="STYLESHEET" type="text/css" href="bootstrap/css/bootstrap.css" />
 </head>
 <body>
-<div id='tayfiresite_content'>
-<h2>Home Page</h2>
-
-Welcome back <?= $TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName(); ?>!
-
-<p><a href='change-pwd.php'>Change password</a></p>
+<div class="container">
+<h2><?= $TayFireUsersite->UserFirstName(); ?>'s Posts!</h2>
 
 <!-- <p><a href='access-controlled.php'>A sample 'members-only' page</a></p> -->
 <br><br><br>
-<p><a href='logout.php'>Logout</a></p>
-</div>
+
+
 <?=
 
-$TayFireUsersite->UserID()." ".$TayFireUsersite->UserEmail()." ".$TayFireUsersite->UserFirstName()." ".$TayFireUsersite->UserLastName();
+$userid = $TayFireUsersite->UserID();
+$username = $TayFireUsersite->UserFirstName();
+$commenter = $_SESSION['user_id_of_user'];
 
-$qry = "SELECT p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '2'";
-$conn = new mysqli('localhost','TayFire','T4yF1r3!','TayFire');
-$result = mysqli_query($conn,$qry);
-if (!$result) {
-    trigger_error('Invalid query: ' . $conn->error);
+$posts = $TayFireUsersite->GetUserPosts($userid);
+if(isset($_POST['Submit']))
+	   {
+			$postid = $_GET['postid']; 
+			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+			$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
+			$result = mysqli_query($conn,$qry);
+			echo "<meta http-equiv='refresh' content='0'>";
+		}
+if(isset($_POST['Liked']))
+{
+	$postid = $_GET['postid']; 
+	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+	$qry2 = "Select post_id,liker_id FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
+	$result = mysqli_query($conn,$qry2);
+	
+	if (!$result || mysqli_num_rows($result)==0)
+	{
+		$postid = $_GET['postid']; 
+		$qry = "Insert Into PostLikes (post_id,liker_id) VALUES('".$postid."','".$commenter."')";
+		$result2 = mysqli_query($conn,$qry);
+		echo "<meta http-equiv='refresh' content='0'>";
+	}
+	else
+	{
+		$postid = $_GET['postid']; 
+		$del = "DELETE FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
+		$result3 = mysqli_query($conn,$del);
+		echo "<meta http-equiv='refresh' content='0'>";
+	}
 }
-if($result->num_rows > 0) {
-	while($row = $result->fetch_assoc()) {
-	   echo $row["p_title"]." <br>" . $row["p_content"]." <br>";
+
+if($posts->num_rows > 0) {
+	while($row = $posts->fetch_assoc()) {
+	    
+	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b></a><i> - ".$TayFireUsersite->GetNamefromID($userid)."</i><br/>".$row["p_content"]." <br />";
+	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
+	   echo "    LIKES: ".$likes."<form id='newComment' action='login-home.php?postid=".$row["post_id"]."' method='post' accept-charset='UTF-8'><br />";
+	   echo "    <div class='container'>";
+	   echo " 		<input type='submit' name='Liked' value='Liked' />";
+       echo "		</div>";
+	   echo "     </form>";
+	   echo "<i>Comments</i> <br />";
+	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
+	   $commenter = $_SESSION['user_id_of_user'];
+       $postid = $row["post_id"];  
+       
+
+		echo "<form id='newComment".$row["post_id"]."' action='login-home.php?postid=".$row["post_id"]."' method='post' accept-charset='UTF-8'>";
+		echo "<fieldset >";
+		echo "<legend>Add Comment</legend>";
+
+		echo "<input type='hidden' name='submitted' id='submitted' value='1'/>";
+
+		echo "<div><span class='error'>".$TayFireUsersite->GetErrorMessage()."</span></div>";
+		echo "<div class='container'>";
+		echo "    <label for='comment' >Comment*: </label><br/>";
+		echo "   <input type='text' name='comment' id='comment' value='".$TayFireUsersite->SafeDisplay('comment')."' maxlength='1250' /><br/>";
+		echo "    <span id='register_name_errorloc' class='error'></span>";
+		echo "</div>";
+		echo "<div class='container'>";
+		echo "   <input type='submit' name='Submit' value='Submit' />";
+		echo "</div>";
+
+		echo "</fieldset>";
+		echo "</form>";
+		echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
 	 }
 }
 else {
-    echo "No posts! <br>";
+    echo "No posts! <br />";
 }
+
 ?>	
+<p><a href='logout.php'>Logout</a></p>
+<p><a href='change-pwd.php'>Change password</a></p>
+</div>
 </body>
 </html>
