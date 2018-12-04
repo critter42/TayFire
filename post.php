@@ -28,7 +28,7 @@ $posterid = $TayFireUsersite->GetPosterID($postid);
 if(isset($_POST['Share']))
 {
 	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
-	$qry4 = "INSERT INTO Share (owner_id,post_id,sharer_id) VALUES(".$row["poster_id"].",".$postid.",".$commenter.")";
+	$qry4 = "INSERT INTO Share (owner_id,post_id,sharer_id) VALUES(".$posterid.",".$postid.",".$commenter.")";
 	$result2 = mysqli_query($conn,$qry4);
 	echo "post Shared!";
 	
