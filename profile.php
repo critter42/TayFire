@@ -94,18 +94,94 @@ else
 	echo "I don't follow anyone yet";
 }
 ?>
-        <br>List feeds</p>
+        <br>My Feed</p>
+<?=
+
+$userid = $TayFireUsersite->UserID();
+$username = $TayFireUsersite->UserFirstName();
+$commenter = $_SESSION['user_id_of_user'];
+
+$posts = $TayFireUsersite->GetUserFriendPosts($userid);
+if(isset($_POST['Submit']))
+	   {
+			$postid = $_GET['postid']; 
+			$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+			$qry = "Insert Into Comment (c_content,commenter_id,post_id) VALUES('".$_POST["comment"]."','".$commenter."','".$postid."')";
+			$result = mysqli_query($conn,$qry);
+			echo "<meta http-equiv='refresh' content='0'>";
+		}
+if(isset($_POST['Liked']))
+{
+	$postid = $_GET['postid']; 
+	$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+	$qry2 = "Select post_id,liker_id FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
+	$result = mysqli_query($conn,$qry2);
+	
+	if (!$result || mysqli_num_rows($result)==0)
+	{
+		$postid = $_GET['postid']; 
+		$qry = "Insert Into PostLikes (post_id,liker_id) VALUES('".$postid."','".$commenter."')";
+		$result2 = mysqli_query($conn,$qry);
+		echo "<meta http-equiv='refresh' content='0'>";
+	}
+	else
+	{
+		$postid = $_GET['postid']; 
+		$del = "DELETE FROM PostLikes WHERE post_id ='".$postid."' AND liker_id = '".$commenter."'";
+		$result3 = mysqli_query($conn,$del);
+		echo "<meta http-equiv='refresh' content='0'>";
+	}
+}
+
+if($posts->num_rows > 0) {
+	while($row = $posts->fetch_assoc()) {
+	    
+	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b></a><i> - <a href='profile.php?profileid=".$row["poster_id"]."'>".$TayFireUsersite->GetNamefromID($row["poster_id"])."</a></i><br/>".$row["p_content"]." <br />";
+	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
+	   echo "    LIKES: ".$likes."<form id='newComment' action='login-home.php?postid=".$row["post_id"]."' method='post' accept-charset='UTF-8'><br />";
+	   echo "    <div class='container'>";
+	   echo " 		<input type='submit' name='Liked' value='Liked' />";
+       echo "		</div>";
+	   echo "     </form>";
+	   echo "<i>Comments</i> <br />";
+	   $comments = $TayFireUsersite->GetComments($row["post_id"]);
+	   $commenter = $_SESSION['user_id_of_user'];
+       $postid = $row["post_id"];  
+       
+
+		echo "<form id='newComment".$row["post_id"]."' action='login-home.php?postid=".$row["post_id"]."' method='post' accept-charset='UTF-8'>";
+		echo "<fieldset >";
+		echo "<legend>Add Comment</legend>";
+
+		echo "<input type='hidden' name='submitted' id='submitted' value='1'/>";
+
+		echo "<div><span class='error'>".$TayFireUsersite->GetErrorMessage()."</span></div>";
+		echo "<div class='container'>";
+		echo "    <label for='comment' >Comment*: </label><br/>";
+		echo "   <input type='text' name='comment' id='comment' value='".$TayFireUsersite->SafeDisplay('comment')."' maxlength='1250' /><br/>";
+		echo "    <span id='register_name_errorloc' class='error'></span>";
+		echo "</div>";
+		echo "<div class='container'>";
+		echo "   <input type='submit' name='Submit' value='Submit' />";
+		echo "</div>";
+
+		echo "</fieldset>";
+		echo "</form>";
+		echo "<center><img src=\"../bootstrap/img/rainbow.gif\"></center>";
+	 }
+}
+else {
+    echo "No posts! <br />";
+}
+
+?>	
       </div>
       <div>
         <p>Show number of posts
         <br>Show 5 most recent posts</p>
       </div>
-      <div class='container'>
-	    <input type='submit' name='Change E-mail' value='Change E-mail' />
-	  </div>
-      <div class='container'>
-	    <input type='submit' name='Change Password' value='Change Password' />
-	  </div>
+<p><a href='logout.php'>Logout</a></p>
+<p><a href='change-pwd.php'>Change password</a></p>
 	</div>
   </body>
 </html>
