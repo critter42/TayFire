@@ -226,7 +226,15 @@ class TayFireUsersite
 		
 		return $count;
 	}
+	function GetFollowerList($userid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT isFollowed_id FROM Follow WHERE follower_id ='".$userid."'";
 		
+		$result = mysqli_query($this->connection,$qry);
+		return $result;
+	}
+	
 	function GetPost($postid)
 	{
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);

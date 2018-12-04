@@ -28,7 +28,19 @@ if(!$TayFireUsersite->CheckLogin())
         <br># Followers: <?php echo $TayFireUsersite->GetFollowerCount($_SESSION['user_id_of_user']);?></p>
       </div>
       <div>
-        <p>List followed users
+        <p>People I follow:<br />
+<?php
+$followed = $TayFireUsersite->GetFollowerList($_SESSION['user_id_of_user']);
+if ($followed->num_rows >0)
+{
+	while($row = $followed->fetch_assoc()){
+		echo "<a href='profile.php?profileid=".$row["isFollowed_id"]."'>".$TayFireUsersite->GetNamefromID($row["isFollowed_id"]);
+	}
+}
+else
+{
+	echo "I don't follow anyone yet"
+}
         <br>List feeds</p>
       </div>
       <div>
