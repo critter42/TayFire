@@ -25,7 +25,7 @@ if(!$TayFireUsersite->CheckLogin())
       <div>
         <p>Name: <?php echo $_SESSION['firstName_of_user']." ".$_SESSION['lastName_of_user']; ?>
         <br>Email: <?php echo $_SESSION['email_of_user']; ?>
-        <br># Followers: <? echo $TayFireUsersite->GetFollowerCount($_SESSION['user_id_of_user']);?></p>
+        <br># Followers: <?php echo $TayFireUsersite->GetFollowerCount($_SESSION['user_id_of_user']);?></p>
       </div>
       <div>
         <p>List followed users
