@@ -18,6 +18,7 @@ if(!$TayFireUsersite->CheckLogin())
 </head>
 <body>
 <div class="container">
+  <img src ="images/TayFireLogo.gif">
 <h2><?= $TayFireUsersite->UserFirstName(); ?>'s Posts!</h2>
 
 <!-- <p><a href='access-controlled.php'>A sample 'members-only' page</a></p> -->

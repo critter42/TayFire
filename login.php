@@ -23,6 +23,7 @@ if(isset($_POST['submitted']))
 
 <!-- Form Code Start -->
 <div class="container">
+  <img src ="images/TayFireLogo.gif"><b>The Blazing Social Media Network!</b>
 <form id='login' action='<?php echo $TayFireUsersite->GetSelfScript(); ?>' method='post' accept-charset='UTF-8'>
 <fieldset >
 <legend>Login</legend>
