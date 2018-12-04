@@ -199,7 +199,7 @@ class TayFireUsersite
 	function GetUserFriendPosts($userid)
 	{
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
-		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '".$userid."' OR p.poster_id IN (SELECT followed_id WHERE follower_id ='".$userid."')";
+		$qry = "SELECT p.post_id,p.poster_id, p.p_title, p.p_content FROM Post AS p where p.poster_id = '".$userid."' OR p.poster_id IN (SELECT isFollowed_id WHERE follower_id ='".$userid."')";
 		echo $qry;
 		$result = mysqli_query($this->connection,$qry);
 		
@@ -207,6 +207,26 @@ class TayFireUsersite
 		return $result;
 	}
 	
+	function GetFollowerCount($userid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "SELECT isFollowed_id FROM Follow WHERE follower_id ='".$userid."'";
+		
+		$result = mysqli_query($this->connection,$qry);
+		if (!$result || mysqli_num_rows($result)==0)
+		{
+			$count = 0;
+		
+		}
+		else
+		{
+		$count=mysqli_num_rows($result);
+		
+		}
+		
+		return $count;
+	}
+		
 	function GetPost($postid)
 	{
 		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
