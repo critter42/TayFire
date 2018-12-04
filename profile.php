@@ -1,12 +1,10 @@
 <?PHP
 require_once("./include/tayfireconfig.php");
 
-if(isset($_POST['submitted']))
+if(!$TayFireUsersite->CheckLogin())
 {
-   if($TayFireUsersite->Login())
-   {
-        $TayFireUsersite->RedirectToURL("index.php");
-   }
+    $TayFireUsersite->RedirectToURL("login.php");
+    exit;
 }
 
 ?>
