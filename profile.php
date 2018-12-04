@@ -32,7 +32,7 @@ else
 	$profile_id = $_GET['profileid'];
 }
         echo "<p>Name: ".$TayFireUsersite->GetNamefromID($profile_id);
-        echo "<br>Email: ".$TayFireUsersite->GetEmailfromID($profile_id);
+        echo "<br>Email: ".$TayFireUsersite->GetUserEmailfromID($profile_id);
         echo "<br># Followers: ".$TayFireUsersite->GetFollowerCount($_SESSION['user_id_of_user'])."</p>";
 ?>
       </div>
