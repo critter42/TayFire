@@ -51,7 +51,7 @@ $followed = $TayFireUsersite->GetFollowerList($profile_id);
 if ($followed->num_rows >0)
 {
 	while($row = $followed->fetch_assoc()){
-		echo "<a href='profile.php?profileid=".$row["isFollowed_id"]."'>".$TayFireUsersite->GetNamefromID($row["isFollowed_id"])."<br />";
+		echo "<a href='profile.php?profileid=".$row["isFollowed_id"]."'>".$TayFireUsersite->GetNamefromID($row["isFollowed_id"])."</a><br />";
 	}
 }
 else
