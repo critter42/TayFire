@@ -41,6 +41,7 @@ else
 {
 	echo "I don't follow anyone yet";
 }
+?>
         <br>List feeds</p>
       </div>
       <div>
