@@ -30,7 +30,7 @@ $userid = $TayFireUsersite->UserID();
 $username = $TayFireUsersite->UserFirstName();
 $commenter = $_SESSION['user_id_of_user'];
 
-$posts = $TayFireUsersite->GetUserPosts($userid);
+$posts = $TayFireUsersite->GetUserFriendPosts($userid);
 if(isset($_POST['Submit']))
 	   {
 			$postid = $_GET['postid']; 
