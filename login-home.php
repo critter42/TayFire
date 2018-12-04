@@ -25,7 +25,7 @@ if(!$TayFireUsersite->CheckLogin())
 <br><br><br>
 
 
-<?=
+<?php
 
 $userid = $TayFireUsersite->UserID();
 $username = $TayFireUsersite->UserFirstName();
@@ -106,7 +106,7 @@ else {
 
 ?>	
 <b>Posts I've Shared</b>
-<?php
+<!-- <?php
 $userid = $TayFireUsersite->UserID();
 $username = $TayFireUsersite->UserFirstName();
 $commenter = $_SESSION['user_id_of_user'];
@@ -184,7 +184,7 @@ else {
     echo "No posts! <br />";
 }
 
-?>
+?> -->
 <p><a href='logout.php'>Logout</a></p>
 <p><a href='change-pwd.php'>Change password</a></p>
 </div>
