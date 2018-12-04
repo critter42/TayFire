@@ -65,7 +65,7 @@ if(isset($_POST['Liked']))
 if($posts->num_rows > 0) {
 	while($row = $posts->fetch_assoc()) {
 	    
-	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b></a><i> - ".$TayFireUsersite->GetNamefromID($userid)."</i><br/>".$row["p_content"]." <br />";
+	   echo "<a href='post.php?postid=".$row["post_id"]."'><b>".$row["p_title"]."</b></a><i> - ".$TayFireUsersite->GetNamefromID($row["poster_id"])."</i><br/>".$row["p_content"]." <br />";
 	   $likes = $TayFireUsersite->GetNumLikes($row["post_id"]);
 	   echo "    LIKES: ".$likes."<form id='newComment' action='login-home.php?postid=".$row["post_id"]."' method='post' accept-charset='UTF-8'><br />";
 	   echo "    <div class='container'>";
