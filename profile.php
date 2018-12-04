@@ -23,9 +23,16 @@ if(!$TayFireUsersite->CheckLogin())
 	    <p>Your Profile</p>
       </div>
       <div>
-        <p>Name: <?php echo $_SESSION['firstName_of_user']." ".$_SESSION['lastName_of_user']; ?>
-        <br>Email: <?php echo $_SESSION['email_of_user']; ?>
-        <br># Followers: <?php echo $TayFireUsersite->GetFollowerCount($_SESSION['user_id_of_user']);?></p>
+<?php
+if (empty($_GET['profileid'])){
+	$profile_id = $_SESSION['user_id_of_user'];
+}
+else
+{
+	$profile_id = $_GET['profileid'];
+        echo "<p>Name: ".$TayFireUsersite->GetNamefromID($profile_id);
+        echo "<br>Email: ".$TayFireUsersite->GetEmailfromID($profile_id);
+        echo "<br># Followers: ".$TayFireUsersite->GetFollowerCount($_SESSION['user_id_of_user'])."</p>";?>
       </div>
       <div>
         <p>People I follow:<br />
@@ -34,7 +41,7 @@ $followed = $TayFireUsersite->GetFollowerList($_SESSION['user_id_of_user']);
 if ($followed->num_rows >0)
 {
 	while($row = $followed->fetch_assoc()){
-		echo "<a href='profile.php?profileid=".$row["isFollowed_id"]."'>".$TayFireUsersite->GetNamefromID($row["isFollowed_id"]);
+		echo "<a href='profile.php?profileid=".$row["isFollowed_id"]."'>".$TayFireUsersite->GetNamefromID($row["isFollowed_id"])."<br />";
 	}
 }
 else

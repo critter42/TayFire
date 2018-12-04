@@ -143,6 +143,17 @@ class TayFireUsersite
 		return isset($_SESSION['user_id_of_user'])?$_SESSION['user_id_of_user']:'';
 	}
 	
+	function GetUserEmailfromID($userid)
+	{
+		$this->connection = mysqli_connect($this->db_host,$this->username,$this->pwd,$this->database);
+		$qry = "Select u.email FROM User as u WHERE u.user_id = '".$userid."'";
+		$result = mysqli_query($this->connection,$qry);
+		while($row = $result->fetch_assoc()){
+			$name = $row["email"];
+		}
+		return $name;
+	}
+	
     function LogOut()
     {
         session_start();
