@@ -40,6 +40,13 @@ if(isset($_POST['Submit']))
 			$result = mysqli_query($conn,$qry);
 			echo "<meta http-equiv='refresh' content='0'>";
 		}
+if(isset($_POST['NewPost']))
+	{
+		$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
+		$qry = "INSERT INTO Post (poster_id, p_title, p_content) VALUES (".userid.",'".$_POST["title"]."','"$_POST["body"]."')";
+		result = mysqli_query($conn,$qry);
+		echo "<meta http-equiv='refresh' content='0'>";
+	}	
 if(isset($_POST['Liked']))
 {
 	$postid = $_GET['postid']; 
@@ -103,7 +110,24 @@ if($posts->num_rows > 0) {
 else {
     echo "No posts! <br />";
 }
+		echo "<form id='NewPost' action='login-home.php' method='post' accept-charset='UTF-8'>";
+		echo "<fieldset >";
+		echo "<legend>New Post</legend>";
 
+		echo "<input type='hidden' name='submitted2' id='submitted2' value='2'/>";
+
+		echo "<div><span class='error'>".$TayFireUsersite->GetErrorMessage()."</span></div>";
+		echo "<div class='container'>";
+		echo "    <label for='title' >Title*: </label><br/>";
+		echo "   <input type='text' name='title' id='title' value='".$TayFireUsersite->SafeDisplay('title')."' maxlength='1250' /><br/>";
+		echo "    <span id='register_name_errorloc' class='error'></span>";
+		echo "</div>";
+		echo "<div class='container'>";
+		echo "   <input type='submit' name='NewPost' value='NewPost' />";
+		echo "</div>";
+
+		echo "</fieldset>";
+		echo "</form>";
 ?>	
 <b>Posts I've Shared</b>
 <!-- <?php
