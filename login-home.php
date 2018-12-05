@@ -45,7 +45,7 @@ if(isset($_POST['NewPost']))
 		$conn  = mysqli_connect("localhost","TayFire","T4yF1r3!","TayFire");
 		$qry = "INSERT INTO Post (poster_id, p_title, p_content) VALUES (".userid.",'".$_POST["title"]."','".$_POST["body"]."')";
 		$result = mysqli_query($conn,$qry);
-		echo "<meta http-equiv='refresh' content='0'>";
+		//echo "<meta http-equiv='refresh' content='0'>";
 	}	
 if(isset($_POST['Liked']))
 {
