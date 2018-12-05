@@ -123,7 +123,7 @@ else {
 		echo "    <span id='register_name_errorloc' class='error'></span>";
 		echo "</div>";
 		echo "<div class='container'>";
-		echo "    <label for='title' >Title*: </label><br/>";
+		echo "    <label for='title' >Body*: </label><br/>";
 		echo "   <input type='text' name='body' id='body' value='".$TayFireUsersite->SafeDisplay('body')."' maxlength='1250' /><br/>";
 		echo "    <span id='register_name_errorloc' class='error'></span>";
 		echo "</div>";
